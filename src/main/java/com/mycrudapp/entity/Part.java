@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "part")
 public class Part implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -53,4 +53,5 @@ public class Part implements Serializable {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
 }

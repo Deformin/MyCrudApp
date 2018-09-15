@@ -9,8 +9,12 @@ import java.util.List;
 
 @Repository
 public class HibernateUtil {
+    private final SessionFactory sessionFactory;
+
     @Autowired
-    private SessionFactory sessionFactory;
+    public HibernateUtil(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public <T> Serializable create(final T entity) {
         return sessionFactory.getCurrentSession().save(entity);

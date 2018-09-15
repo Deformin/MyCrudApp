@@ -17,8 +17,12 @@ import java.util.List;
 public class PartController {
     private static final Logger logger = Logger.getLogger(PartController.class);
     private static final int MAX_ROWS_PER_PAGE = 10;
+    private final PartService partService;
+
     @Autowired
-    private PartService partService;
+    public PartController(PartService partService) {
+        this.partService = partService;
+    }
 
     @RequestMapping("createPart")
     public ModelAndView createPart(@ModelAttribute Part part) {

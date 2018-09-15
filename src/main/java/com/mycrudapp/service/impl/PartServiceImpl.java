@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 @Transactional
 public class PartServiceImpl implements PartService {
+    private final PartDAO partDAO;
+
     @Autowired
-    private PartDAO partDAO;
+    public PartServiceImpl(PartDAO partDAO) {
+        this.partDAO = partDAO;
+    }
 
     @Override
     public int createPart(Part part) {

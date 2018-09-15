@@ -12,8 +12,12 @@ import java.util.List;
 
 @Repository
 public class PartDAOImpl implements PartDAO {
+    private final HibernateUtil hibernateUtil;
+
     @Autowired
-    private HibernateUtil hibernateUtil;
+    public PartDAOImpl(HibernateUtil hibernateUtil) {
+        this.hibernateUtil = hibernateUtil;
+    }
 
     @Override
     public int createPart(Part part) {
@@ -77,7 +81,7 @@ public class PartDAOImpl implements PartDAO {
             Part part = new Part();
             int id = (int) partObject[0];
             String name = (String) partObject[1];
-            boolean isNeeded = (byte) partObject[2] == 1;
+            boolean isNeeded = (boolean) partObject[2];
             int amount = (int) partObject[3];
             part.setId(id);
             part.setName(name);

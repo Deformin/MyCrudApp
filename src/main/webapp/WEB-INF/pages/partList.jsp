@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Computer Parts List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style type="text/css">
         .myrow-container {
             margin: 20px;
@@ -109,12 +109,11 @@
                                 <option value="false">optional</option>
                             </select>
                         </div>
-                        <div class="col-md-1"></div>
                         <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Filter'/></div>
                     </div>
                 </form>
 
-                <table class="table table-hover table-bordered" style="text-align:center">
+                <table class="table table-striped table-dark" style="text-align:center">
                     <thead style="background-color: #b39b89;">
                     <tr>
                         <th align="center">ID</th>
@@ -139,7 +138,7 @@
                     </tbody>
                 </table>
             </c:if>
-            <table class="table table-bordered">
+            <table class="table table-striped table-dark">
                 <tbody>
                 <tr>
                     <th>Possible to assemble</th>
