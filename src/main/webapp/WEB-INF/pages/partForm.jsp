@@ -10,7 +10,7 @@
 <meta name="author" content="Andrey Tolkachev">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Информация о детали</title>
+    <title>Part Information</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style type="text/css">
         .myrow-container {
@@ -43,7 +43,7 @@
     <div class="panel panel-success">
         <div class="panel-heading" style="background-color:#786455">
             <h3 class="panel-title" style="color: #d1cbbc">
-                Информация о детали
+                Part Information
             </h3>
         </div>
         <div class="panel-body">
@@ -51,7 +51,7 @@
                        action="savePart">
 
                 <div class="form-group">
-                    <div class="control-label col-xs-3"><form:label path="name">Наименование</form:label></div>
+                    <div class="control-label col-xs-3"><form:label path="name">Name</form:label></div>
                     <div class="col-xs-3">
                         <form:hidden path="id" value="${partObject.id}"/>
                         <form:input cssClass="form-control" path="name" value="${partObject.name}"/>
@@ -59,17 +59,17 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="control-label col-xs-3"><form:label path="needed">Необходимость</form:label></div>
+                    <div class="control-label col-xs-3"><form:label path="needed">Necessity</form:label></div>
                     <div class="col-md-3">
                         <form:select path="needed">
-                            <option value='true'>да</option>
-                            <option value='false'>нет</option>
+                            <option value='true'>yes</option>
+                            <option value='false'>no</option>
                         </form:select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <form:label path="amount" cssClass="control-label col-xs-3">Количество на складе</form:label>
+                    <form:label path="amount" cssClass="control-label col-xs-3">Amount in storage</form:label>
                     <div class="col-xs-3">
                         <form:input cssClass="form-control" path="amount" value="${partObject.amount}"/>
                     </div>
@@ -102,22 +102,15 @@
 // getting the part form values
         var name = $('#name').val().trim();
         var amount = $('#amount').val();
-        var isNeeded = $('#needed').val();
-        if (name.isEmpty()) {
+        $('#needed').val();
+        if (name.length === 0) {
             alert('Please enter name');
             $('#name').focus();
             return false;
         }
-
         if (amount < 0) {
             alert('Please enter proper amount');
             $('#amount').focus();
-            return false;
-        }
-
-        if (isNeeded == null) {
-            alert('Please enter proper necessity');
-            $('#needed').focus();
             return false;
         }
         return true;

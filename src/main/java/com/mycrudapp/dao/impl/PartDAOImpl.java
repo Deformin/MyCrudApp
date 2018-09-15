@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,8 +43,8 @@ public class PartDAOImpl implements PartDAO {
     }
 
     @Override
-    public int computerAmount() {
-        List<Part> neededParts = getAllParts("true");
+    public Integer computerAmount() {
+        List<Part> neededParts = getNeeded("true");
         if (neededParts.isEmpty()) return 0;
         List<Integer> amounts = new ArrayList<>();
         neededParts.forEach(part -> amounts.add(part.getAmount()));

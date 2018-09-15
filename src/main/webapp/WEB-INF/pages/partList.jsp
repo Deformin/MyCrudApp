@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Список комплектующих</title>
+    <title>Computer Parts List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <style type="text/css">
         .myrow-container {
@@ -83,58 +83,57 @@
     <div class="panel">
         <div class="panel-heading" style="background-color:#786455">
             <h3 class="panel-title ">
-                <div align="left"><a class="aCreatePart" href="createPart">Добавить новую деталь+</a></div>
+                <div align="left"><a class="aCreatePart" href="createPart">Add new part+</a></div>
             </h3>
         </div>
         <div class="panel-body">
             <c:if test="${empty partList}">
-                На складе нет деталей
+                No such parts in storage...
             </c:if>
             <c:if test="${not empty partList}">
                 <form action="searchPart">
                     <div class="row">
-                        <div class="col-md-3">Искать детали по имени:</div>
+                        <div class="col-md-2">Search parts by name:</div>
                         <div class="col-md-2"><input type="text" name="searchName" id="searchName"
-                                                     placeholder="введите текст..."></div>
-                        <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Поиск'/></div>
+                                                     placeholder="enter text..."></div>
+                        <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Search'/></div>
                     </div>
                 </form>
                 <form action="listNeeded">
                     <div class="row">
-                        <div class="col-md-4">Фильтровать детали по необходимости:</div>
+                        <div class="col-md-2">Filter parts by necessity:</div>
                         <div class="col-md-2">
                             <select name="isNeeded" id="isNeeded">
-                                <option value="">все</option>
-                                <option value="true">необходимые для сборки</option>
-                                <option value="false">опциональные</option>
+                                <option value="">all parts</option>
+                                <option value="true">required for assembly</option>
+                                <option value="false">optional</option>
                             </select>
                         </div>
                         <div class="col-md-1"></div>
-                        <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Отфильтровать'/></div>
+                        <div class="col-md-2"><input class="btn btn-xs" type='submit' value='Filter'/></div>
                     </div>
                 </form>
 
                 <table class="table table-hover table-bordered" style="text-align:center">
                     <thead style="background-color: #b39b89;">
                     <tr>
-                        <th>ID</th>
-                        <th>Наименование</th>
-                        <th>Необходимость</th>
-                        <th>Количество</th>
-                        <th>Редактирование</th>
-                        <th>Удаление</th>
+                        <th align="center">ID</th>
+                        <th align="center">Name</th>
+                        <th align="center">Necessity</th>
+                        <th align="center">Amount</th>
+                        <th align="center">Edit</th>
+                        <th align="center">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${partList}" var="part">
                             <tr>
-                                <th><c:out value='${part.id}'/></th>
-                                <th><c:out value='${part.name}'/></th>
-                                <th><c:out value='${part.needed == true ? "да" : "нет"}'/></th>
-                                <th><c:out value='${part.amount}'/></th>
-                                <th><a class="aEdit" href="editPart?id=<c:out value='${part.id}'/>">Редактировать</a>
-                                </th>
-                                <th><a class="aDelete" href="deletePart?id=<c:out value='${part.id}'/>">Удалить</a></th>
+                                <th align="center"><c:out value='${part.id}'/></th>
+                                <th align="center"><c:out value='${part.name}'/></th>
+                                <th align="center"><c:out value='${part.needed == true ? "yes" : "no"}'/></th>
+                                <th align="center"><c:out value='${part.amount}'/></th>
+                                <th align="center"><a class="aEdit" href="editPart?id=<c:out value='${part.id}'/>">Edit</a></th>
+                                <th align="center"><a class="aDelete" href="deletePart?id=<c:out value='${part.id}'/>">Delete</a></th>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -143,9 +142,9 @@
             <table class="table table-bordered">
                 <tbody>
                 <tr>
-                    <th>Можно собрать</th>
+                    <th>Possible to assemble</th>
                     <th><c:out value='${computers}'/></th>
-                    <th>компьютеров</th>
+                    <th>computer(s)</th>
                 </tr>
                 </tbody>
             </table>
@@ -155,7 +154,7 @@
                 <c:param name="page" value="${page-1}"/>
             </c:url>
             <c:if test="${page > 1}">
-                <a href="<c:out value="${prev}" />" class="pn prev">Пред</a>
+                <a href="<c:out value="${prev}" />" class="pn prev">Previous</a>
             </c:if>
 
             <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
@@ -175,7 +174,7 @@
                 <c:param name="page" value="${page + 1}"/>
             </c:url>
             <c:if test="${page + 1 <= maxPages}">
-                <a href='<c:out value="${next}" />' class="pn next">След</a>
+                <a href='<c:out value="${next}" />' class="pn next">Next</a>
             </c:if>
         </div>
     </div>

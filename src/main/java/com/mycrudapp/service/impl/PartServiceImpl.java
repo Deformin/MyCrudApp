@@ -16,13 +16,13 @@ public class PartServiceImpl implements PartService {
     private PartDAO partDAO;
 
     @Override
-    public void createPart(Part part) {
-        partDAO.createPart(part);
+    public int createPart(Part part) {
+        return partDAO.createPart(part);
     }
 
     @Override
-    public void updatePart(Part part) {
-        partDAO.updatePart(part);
+    public Part updatePart(Part part) {
+        return partDAO.updatePart(part);
     }
 
     @Override
@@ -51,5 +51,5 @@ public class PartServiceImpl implements PartService {
     }
 
     @Override
-    public int computerAmount() {return partDAO.computerAmount();}
+    public Integer computerAmount() {return partDAO.computerAmount();}
 }

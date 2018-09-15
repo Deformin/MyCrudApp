@@ -12,5 +12,5 @@ public interface PartDAO {
     Part getPart(int id);
     List<Part> getAllParts(String partName);
     List<Part> getNeeded(String filterNeeded);
-    int computerAmount();
+    Integer computerAmount();
 }

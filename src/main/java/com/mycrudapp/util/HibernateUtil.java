@@ -31,12 +31,12 @@ public class HibernateUtil {
     }
 
     @SuppressWarnings("rawtypes")
-    public <T> List fetchAll(String query) {
+    public List fetchAll(String query) {
         return sessionFactory.getCurrentSession().createSQLQuery(query).list();
     }
 
     @SuppressWarnings("unchecked")
     public <T> T fetchById(Serializable id, Class<T> entityClass) {
-        return sessionFactory.getCurrentSession().get(entityClass, id);
+        return (T) sessionFactory.getCurrentSession().get(entityClass, id);
     }
 }

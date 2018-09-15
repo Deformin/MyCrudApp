@@ -8,7 +8,6 @@ import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,11 +17,6 @@ import java.util.List;
 public class PartController {
     private static final Logger logger = Logger.getLogger(PartController.class);
     private static final int MAX_ROWS_PER_PAGE = 10;
-
-    public PartController() {
-        System.out.println("PartController()");
-    }
-
     @Autowired
     private PartService partService;
 
@@ -34,7 +28,7 @@ public class PartController {
 
     @RequestMapping("editPart")
     public ModelAndView editPart(@RequestParam int id, @ModelAttribute Part part) {
-        logger.info("Updating the Part for the Id " + id);
+        logger.info("Updating the Part for the Id " + id + " and part " + part);
         part = partService.getPart(id);
         return new ModelAndView("partForm", "partObject", part);
     }
@@ -60,15 +54,19 @@ public class PartController {
     @RequestMapping("getAllParts")
     public ModelAndView getAllParts() {
         logger.info("Getting all Parts.");
-        List<Part> partLists = partService.getAllParts();
-        return new ModelAndView("partList", "partList", partLists);
+        List<Part> partsList = partService.getAllParts();
+        ModelAndView modelAndView = new ModelAndView("partList", "partList", partsList);
+        modelAndView.addObject("computers", computers());
+        return modelAndView;
     }
 
     @RequestMapping("searchPart")
     public ModelAndView searchPart(@RequestParam("searchName") String searchName) {
         logger.info("Searching the Part. Part Name(s): " + searchName);
         List<Part> partsList = partService.getAllParts(searchName);
-        return new ModelAndView("partList", "partList", partsList);
+        ModelAndView modelAndView = new ModelAndView("partList", "partList", partsList);
+        modelAndView.addObject("computers", computers());
+        return modelAndView;
     }
 
     @RequestMapping("/")
@@ -90,6 +88,7 @@ public class PartController {
             modelAndView.addObject("partList", pagedListHolder.getPageList());
         }
         modelAndView.addObject("page", page);
+        modelAndView.addObject("computers", computers());
         return modelAndView;
     }
 
@@ -97,13 +96,14 @@ public class PartController {
     public ModelAndView listNeeded(@RequestParam("isNeeded") String filterNeeded) {
         logger.info("Getting Needed or Not Needed Parts.");
         List<Part> partsList = partService.getNeeded(filterNeeded);
-        return new ModelAndView("partList", "partList", partsList);
+        ModelAndView modelAndView = new ModelAndView("partList", "partList", partsList);
+        modelAndView.addObject("computers", computers());
+        return modelAndView;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView computers() {
+    private Integer computers() {
         logger.info("Getting Computer Amount.");
-        Integer computers = partService.computerAmount();
-        return new ModelAndView("partList", "partList", computers);
+        System.out.println(partService.computerAmount());
+        return partService.computerAmount();
     }
 }
