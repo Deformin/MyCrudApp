@@ -4,7 +4,7 @@ Parts are stored in database. One can create, update and delete the parts via th
 
 Used technologies:  
 	• Maven (to build the project);  
-	• Tomcat 9 (for deployment);  
+	• Tomcat 9 (for deployment and testing);  
 	• Spring Framework;  
 	• Hibernate;  
 	• Oracle MySQL;  
