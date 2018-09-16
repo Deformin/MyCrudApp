@@ -41,6 +41,6 @@ public class HibernateUtil {
 
     @SuppressWarnings("unchecked")
     public <T> T fetchById(Serializable id, Class<T> entityClass) {
-        return (T) sessionFactory.getCurrentSession().get(entityClass, id);
+        return sessionFactory.getCurrentSession().get(entityClass, id);
     }
 }
