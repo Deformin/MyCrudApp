@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Computer Parts List</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <style type="text/css">
         .myrow-container {
             margin: 20px;
@@ -16,24 +16,24 @@
             padding: 2px 2px;
             width: 10em;
             height: 2em;
-            background-color: #4d3a1e;
+            background-color: #5b5bb5;
             color: #f1f1f1;
             border-radius: 0;
             transition: .2s;
         }
 
         .btn:hover, .btn:focus {
-            border: 1px solid #4d3a1e;
+            border: 1px solid #5b5bb5;
             background-color: #fff;
             color: #000;
         }
 
         a.aEdit:link, a.aDelete:link {
-            color: #a83016;
+            color: #7a8bff;
         }
 
         a.aEdit:visited, a.aDelete:visited {
-            color: #947872;
+            color: #b9c6ff;
         }
 
         a.aEdit:hover, a.aDelete:hover {
@@ -49,7 +49,7 @@
         }
 
         a.aCreatePart:visited {
-            color: #c4bba5;
+            color: #f4f8ff;
         }
 
         a.aCreatePart:hover {
@@ -65,7 +65,7 @@
         }
 
         .panel-footer a:visited {
-            color: #c4bba5;
+            color: #f4f8ff;
         }
 
         .panel-footer a:hover {
@@ -81,7 +81,7 @@
 <body class=".container-fluid" style="background-color:whitesmoke">
 <div class="container myrow-container">
     <div class="panel">
-        <div class="panel-heading" style="background-color:#786455">
+        <div class="panel-heading" style="background-color:#5b5bb5">
             <h3 class="panel-title ">
                 <div align="left"><a class="aCreatePart" href="createPart">Add new part+</a></div>
             </h3>
@@ -114,7 +114,7 @@
                 </form>
 
                 <table class="table table-striped table-dark" style="text-align:center">
-                    <thead style="background-color: #b39b89;">
+                    <thead style="background-color: #5b5bb5;">
                     <tr>
                         <th align="center">ID</th>
                         <th align="center">Name</th>
@@ -125,16 +125,18 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${partList}" var="part">
-                            <tr>
-                                <th align="center"><c:out value='${part.id}'/></th>
-                                <th align="center"><c:out value='${part.name}'/></th>
-                                <th align="center"><c:out value='${part.needed == true ? "yes" : "no"}'/></th>
-                                <th align="center"><c:out value='${part.amount}'/></th>
-                                <th align="center"><a class="aEdit" href="editPart?id=<c:out value='${part.id}'/>">Edit</a></th>
-                                <th align="center"><a class="aDelete" href="deletePart?id=<c:out value='${part.id}'/>">Delete</a></th>
-                            </tr>
-                        </c:forEach>
+                    <c:forEach items="${partList}" var="part">
+                        <tr>
+                            <th align="center"><c:out value='${part.id}'/></th>
+                            <th align="center"><c:out value='${part.name}'/></th>
+                            <th align="center"><c:out value='${part.needed == true ? "yes" : "no"}'/></th>
+                            <th align="center"><c:out value='${part.amount}'/></th>
+                            <th align="center"><a class="aEdit" href="editPart?id=<c:out value='${part.id}'/>">Edit</a>
+                            </th>
+                            <th align="center"><a class="aDelete" href="deletePart?id=<c:out value='${part.id}'/>">Delete</a>
+                            </th>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </c:if>
@@ -148,7 +150,7 @@
                 </tbody>
             </table>
         </div>
-        <div align="center" class="panel-footer" style="background-color:#786455" id="pagination">
+        <div align="center" class="panel-footer" style="background-color:#5b5bb5" id="pagination">
             <c:url value="/" var="prev">
                 <c:param name="page" value="${page-1}"/>
             </c:url>
@@ -178,7 +180,7 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>
 </body>
 </html>
